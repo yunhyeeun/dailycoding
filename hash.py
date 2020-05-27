@@ -3,10 +3,10 @@
 """
  1. 완주하지 못한 선수 찾기
     input: participant, completion
-    participant:  마라톤에 참여한 선수들의 이름이 담긴 배열
-    completion:   완주한 선수들의 이름이 담긴 배열
-
+      participant: 마라톤에 참여한 선수들의 이름이 담긴 배열
+      completion: 완주한 선수들의 이름이 담긴 배열
     output: 완주하지 못한 선수의 이름
+    
     예시) participant = ["Kim", "Lee", "Park"]
          completion = ["Lee", "Park"]   
          output = "Kim"
@@ -32,9 +32,9 @@ def find_player(participant, completion):
 """
 2. 스파이가 옷을 입는 방법
    input: clothes
-   clothes: 스파이가 가진 의상들이 담긴 2차원 배열
-   
+     clothes: 스파이가 가진 의상들이 담긴 2차원 배열
    output: 서로 다른 옷의 조합의 수   
+   
    예시) clothes = [["yellow_hat", "headgear"],
                    ["blue_sunglasses", "eyewear"],
                    ["green_turban", "headgear"]]   
@@ -59,9 +59,8 @@ def spy_wear(clothes):
 """
 3. 베스트 앨범 만들기
    input: genres, plays
-   genres: 노래 장르를 나타내는 배열
-   plays: 노래별 재생 횟수를 나타내는 배열
-
+     genres: 노래 장르를 나타내는 배열
+     plays: 노래별 재생 횟수를 나타내는 배열
    output: 베스트 앨범에 들어갈 노래의 고유번호를 담은 리스트
 
    베스트 앨범에 들어가는 기준:
