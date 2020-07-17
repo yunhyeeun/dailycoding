@@ -1,0 +1,188 @@
+body {
+  font-family: sans-serif;
+  background-color: #f5eeee;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffa69e;
+  position: fixed;
+  top: 0;
+}
+
+@media (max-width: 640px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+#header-img {
+  width: 50px;
+  height: 50px;
+  align-self: flex-start;
+  flex-grow: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+#title {
+  margin: 0;
+  padding-left: 20px;
+  flex-grow: 0;
+  flex-shrink: 1;
+  letter-spacing: 0.3rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+#nav-bar {
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin: 0;
+}
+
+#nav-bar li {
+  display: inline-block;
+  margin: 0 10px;
+  list-style: none;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #e56b6f;
+  text-decoration: underline;
+}
+
+#signup-section {
+  text-align: center;
+  margin: 150px 0 50px 0;
+}
+
+@media (max-width: 640px) {
+  #signup-section {
+    margin-top: 200px;
+  }
+}
+
+#signup-section h3 {
+  margin-bottom: 10px;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#email {
+  width: 50%;
+  max-width: 400px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+#submit {
+  padding: 10px 30px;
+  border: none;
+  background-color: #5e6472;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+}
+
+#about-section {
+  margin: 100px auto;
+}
+
+.about-div {
+  display: flex;
+  margin: 50px 0;
+  padding: 0 20%;
+  align-items: center;
+}
+
+.about-div img {
+  width: 64px;
+  height: 64px;
+  padding: 0 3%;
+}
+
+.about-text-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#video {
+  display: block;
+  margin: 30px auto;
+}
+
+#membership-section {
+  display: flex;  
+  margin: 100px;
+  justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+  #membership-section {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+.membership-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  width: 30%;
+  max-width: 300px;
+  margin: 0 30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .membership-div {
+    width: 400px;
+    margin-bottom: 30px;
+  }
+}
+
+.membership-div h3 {
+  width: 100%;
+  padding: 10px 0;
+  background-color: rgb(0,0,0,0.1);
+}
+
+.membership-div ol {
+  padding: 0;
+  list-style: none;
+}
+
+.membership-div li {
+  padding: 3px 0;
+}
+
+.membership-btn {
+  padding: 5px 30px;
+  border: none;
+  background-color: #5e6472;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+}
