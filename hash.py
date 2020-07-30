@@ -41,20 +41,16 @@ def find_player(participant, completion):
         output = 5
 """
 
+from functools import reduce
+
 def spy_wear(clothes):
-    closet = {}
-    for c_name, c_type in clothes:
-        if c_type in closet:
-            closet[c_type] += 1
+    clothesMap = {}
+    for name, feature in clothes:
+        if feature in clothesMap:
+            clothesMap[feature] += 1
         else:
-            # 안 입는 경우를 고려하여 2를 default로 한다
-            closet[c_type] = 2
-    answer = 1
-    for num in closet.values():
-        answer *= num
-    # 하나도 안 입는 경우 제외
-    answer -= 1
-    return answer
+            clothesMap[feature] = 2
+    return reduce((lambda x, y: x * y), clothesMap.values()) - 1
 
 """
 3. 베스트 앨범 만들기
@@ -69,29 +65,61 @@ def spy_wear(clothes):
     3. 장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록한다.
 """
 
-def make_album(genres, plays):
-    songs = {}
-    playcount = {}
-    # 장르별 총 재생횟수를 구하여 정렬
-    for i in range(len(genres)):
-        if genres[i] in playcount:
-            songs[genres[i]].append((i, plays[i]))
-            playcount[genres[i]] += plays[i]
+from functools import reduce
+
+def makeGenreList(genres):
+    genreMap = {}
+    for i, genre in enumerate(genres):
+        if genre in genreMap:
+            genreMap[genre].append(i)
         else:
-            songs[genres[i]] = [(i, plays[i])]
-            playcount[genres[i]] = plays[i]
+            genreMap[genre] = [i]
+    return genreMap
 
-    sorted_playcount = [ genre for genre, count in sorted(playcount.items(), key=lambda x: x[1], reverse=True) ]
-    
-    answer = []  
-    # 장르 내 노래별 재생횟수 정렬
-    for genre in sorted_playcount:
-        songlist = songs[genre]
-        sorted_songlist = sorted(songlist, key=lambda x: (-x[1], x[0]))
+def sortByGenre(genreMap, plays):
+    countMap = {}
+    for genre in genreMap.keys():
+        playcount = [plays[idx] for idx in genreMap[genre]]
+        countMap[genre] = reduce((lambda x, y: x + y), playcount)
+    countList = list(countMap.items())
+    countList.sort(key=lambda x: x[1], reverse=True)
+    return [x[0] for x in countList]
+        
+def sortInGenre(genreMap, genreList, plays):
+    output = []
+    for genre in genreList:
+        count = [(idx, plays[idx]) for idx in genreMap[genre]]
+        count.sort(key=lambda x: (-x[1], x[0]))
+        output += [x[0] for x in count][:2]
+    return output
 
-        for i in range(len(songlist)):
-            if i > 1:
-                break
-            else:
-                answer.append(sorted_songlist[i][0])
+def makeAlbum(genres, plays):
+    genreMap = makeGenreList(genres)
+    genreList = sortByGenre(genreMap, plays)
+    answer = sortInGenre(genreMap, genreList, plays)
     return answer
+
+"""
+4. 전화번호 목록
+    input: phone_book
+        phone_book: 전화번호를 담은 배열
+    output: 어떤 번호가 다른 번호의 접두어인 경우면 false, 그렇지 않으면 true
+
+    예시) phone_book = ["123", "456", "789"]
+         output = true
+
+         phone_book = ["119", "1193742874", "57042834"]
+         output = false
+"""
+
+def findPrefixNum(phone_book):
+    phone_book.sort()
+    for i, number in enumerate(phone_book):
+        for j, tmp in enumerate(phone_book):
+            if i >= j:
+                continue
+            elif tmp.startswith(number):
+                return False
+            else:
+                continue
+    return True
