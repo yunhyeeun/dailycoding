@@ -37,20 +37,20 @@ solution 함수의 매개변수로 다리 길이 bridge_length, 다리가 견딜
 이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 solution 함수를 완성하세요.
 '''
 def truck(bridge_length, weight, truck_weights):
-    numTruck = len(truck_weights)
-    time = [0] * numTruck
-    truckInBridge = []
-    passedTruck = []
-    while len(passedTruck) < numTruck:
-        if (len(truck_weights) > 0 and sum(truckInBridge) + truck_weights[0] <= weight):
-            truckInBridge.append(truck_weights.pop(0))
-        time[:len(passedTruck) + len(truckInBridge)] = [x+1 for x in time[:len(passedTruck) + len(truckInBridge)]]
-        if time[len(passedTruck)] == bridge_length:
-            passedTruck.append(truckInBridge.pop(0))
-    print (truck_weights)
-    print (time)
-    answer = time[0] + 1
-    return answer
+    total = len(truck_weights)
+    inBridge = []
+    outBridge = []
+    truck_weights.reverse()
+    time = [0] * len(truck_weights)
+    
+    while (len(outBridge) < total):
+        while len(truck_weights) > 0 and sum(inBridge)+ truck_weights[-1] <= weight:
+            inBridge.append(truck_weights.pop())
+            time[:len(inBridge) + len(outBridge)] = [x+1 for x in time[:len(inBridge) + len(outBridge)]]
+        while (time[len(outBridge)] < bridge_length):
+            time[:len(inBridge) + len(outBridge)] = [x+1 for x in time[:len(inBridge) + len(outBridge)]]
+        outBridge.append(inBridge.pop(0))
+    return time[0] + 1
 
 '''
 3. 기능개발
@@ -59,19 +59,21 @@ def truck(bridge_length, weight, truck_weights):
 progresses	 speeds     return   
 [93,30,55]	[1,30,5]    [2,1]  
 '''
+from math import ceil
+
+def findNum(completeDays):
+    for i in range(1, len(completeDays)):
+        if completeDays[i] > completeDays[0]:
+            return i
+    return len(completeDays)
+
 def func(progresses, speeds):
     answer = []
-    numProgress = len(progresses)
-    while (sum(answer) != numProgress):
-        while progresses[0] < 100:
-            for i in range(len(progresses)):
-                progresses[i] += speeds[i]
-        finished = []
-        for i in range(len(progresses)):
-            if progresses[0] >= 100:
-                finished.append(progresses.pop(0))
-                speeds.pop(0)
-        answer.append(len(finished))
+    completeDays = [ceil((100-x)/y) for x, y in zip(progresses, speeds)]
+    while (len(completeDays) > 0):
+        endNum = findNum(completeDays)
+        answer.append(endNum)
+        completeDays = completeDays[endNum:]
     return answer
 
 '''
