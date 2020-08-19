@@ -1,0 +1,8 @@
+NUM -2
+MOD
+END
+2
+2
+3
+
+QUIT
