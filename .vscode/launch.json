@@ -8,6 +8,20 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "day01.p2580.Main",
+            "projectName": "dailycoding_bf84afbb"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "day01.p3425.Main",
+            "projectName": "dailycoding_bf84afbb"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "day01.p1713.Main",
             "projectName": "dailycoding_bf84afbb"
         },
