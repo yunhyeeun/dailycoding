@@ -8,6 +8,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "day02.p11003.Main",
+            "projectName": "dailycoding_bf84afbb"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "day01.p2580.Main",
             "projectName": "dailycoding_bf84afbb"
         },
