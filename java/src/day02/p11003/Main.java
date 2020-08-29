@@ -41,6 +41,7 @@ public class Main {
 			bw.write(D[i] + " ");
         }
         bw.write("\n");
-		bw.flush();
+        bw.flush();
+        bw.close();
 	}
 }
